@@ -26,6 +26,9 @@ git remote add origin https://github.com/isakovs/isakovs.git
 Добавить обновления репозитория:
 git push -u origin master
 
+ВРОДЕ скинуть все файлы в репозитория в текущую папку: 
+git clone git://g...
+
 
 ============ Программы ============
 Visual Studio Code

@@ -17,4 +17,5 @@ def get_pair():
 		print('неправильно')
 		get_pair()
 		
+		
 result = get_pair()
