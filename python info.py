@@ -1,3 +1,6 @@
+\n - перенос строки
+\t - добавить табуляцию
+
 ============ Командная строка ============
 pwd – показать текущую папку
 cd .. – возвращает на уровень вверх
@@ -64,6 +67,8 @@ print(c)
 - bool() - приводит к логической херне 
 - str() - приводит к строке 
 - abs() - взвращает значение по модулю
+- .upper - приводит всё к заглавным буквам
+- .replace('что меняем', 'на что меняем') - замена 
 
 == - равно 
 != или <> - не равно
@@ -165,7 +170,98 @@ python -m pip install --user google-assistant-sdk[samples]
 sudo python -m pip install google-assistant-sdk[samples]
 
 
+============ Работа с файлами ============
+with open('myfole.txt'. 'w', encoding='utf-8') as myfile:
+	myfile.write('Всем привет!')
+'''
+with - вроде чтобы не нужно было закрывать файл
+'w' или 'r' - читать или перезаписывать
+'r' - не перезаписывать, а заносить в конец
+'''
 
+with open('myfole.txt'. 'r', encoding='utf-8') as myfile:
+	text = myfile.read()
+	print(text)
+'''
+текст распечатается, но это плохой вариант, потому что занимает много памяти. Лучше печатать построчно 
+'''
+
+with open('myfole.txt'. 'r', encoding='utf-8') as f:
+	for line in f:
+		line = line.apper()
+		print(linr)
+
+
+
+============ Useful modules ============
+########################################
+########################################
+# datetime - работа с датой и временем
+########################################
+Компоненты: 
+date - 
+time - 
+datetime - дата/время
+timedelta - разница между моментами времени
+tzinfo - часовые пояса и летнее время
+
+# пример
+from datetime import datetime
+dt_now = datetime.now()
+dt_now 
+
+datetime.datetime(2020, 6, 7, 19, 6, 40484)
+
+# мы можем создавать дату
+dt2 = datetime(2020, 5, 16, 8, 4, 44)
+dt2
+datetime.datetime(2020, 5, 16, 8, 3, 44)
+
+# разница между датами
+delta = dt_now - dt2
+delta
+
+datetime.timedelta(504, 11663, 4738474)
+	#здесь дни, секунды, милисекунды
+
+#вывод даты на экран
+from datetime import datetime
+dt_now = datetime.now()
+dt_now.strftime('%d.%m.%Y %H:%M')
+
+'01.10.2020 11:10'
+
+# для локализации написания даты и времени под русский язык используется модуль locale
+import locale 
+locale.setlocale(locale.LC_ALL, "russian")
+dt_now.strftime('%A %d %B %Y')
+
+'суббота 01 октября 2020'
+
+#получение даты из строки
+date_string = '12/23/2020'
+date_dt = datetime(date_string, '%m/%d/%Y')
+date_dt
+
+datetime.datetime(2020, 12, 23, 0, 0)
+
+########################################
+########################################
+# csv - запись и чтение csv файлов
+########################################
+import csv 
+with open('users.csv', 'r', encoding='utf-8') as f:
+	fields = ['first_name', 'last_name', 'email', 'gender', 'balance'] #объявляем поля, чтобы вывести их на печать в словари
+	reader = csv.DictReader(f, fields, delimiter=';') #из модуля вызываем функцию и ей обозначаем (переменную с таблицей, поля для обозначения столбцов, разделитель)
+	for row in reader:
+		print(row)
+
+#для записи данных в csv нужно иметь их в списке словарей в коде
+with open('export.csv', 'w', encoding='utf-8') as f: #здесь уже стоит 'w'
+	fields = ['first_name', 'last_name', 'email', 'gender', 'balance'] #объявляем, как будут называться столбцы
+	writer = csv.DictWriter(f, fields, delimiter=';') #из модуля вызываем функцию и ей обозначаем (переменную с таблицей, поля для обозначения столбцов, разделитель)
+	for row in reader:
+		print(row)
 
 
 
